@@ -8,7 +8,7 @@ namespace Net.core_fundamentals_2
 
         static void Main(string[] args)
         {
-         
+            Arrays();
 
         }
 
