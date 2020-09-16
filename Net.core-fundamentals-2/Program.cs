@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Text; // req. for stringbuilder
 
 namespace Net.core_fundamentals_2
 {
@@ -11,21 +12,129 @@ namespace Net.core_fundamentals_2
         {
             // Arrays();
             // PrimitivNumber();
+            // AskForNumber();
 
+            bool keepLooping = true;
+            List<double> numberList = new List<double>();
 
-            AskForNumber();
+            while (keepLooping)
+            {
+                Console.WriteLine("-----------Menu----------");
+                Console.WriteLine("1: Print list");
+                Console.WriteLine("2: Add to list");
+                Console.WriteLine("3: Speed test");
+                Console.WriteLine("4: Random Example");
+                Console.WriteLine("-1: Exit");
+
+                double selection = AskForNumber();
+
+                switch (selection)
+                {
+                    case 1:
+                        PrintList(numberList);
+                        break;
+                    case 2:
+                        numberList.Add(AskForNumber());
+                        break;
+                    case 3:
+                        SpeedDifStringVSStringBuilder();
+                        break;
+                    case 4:
+                        RandomEx();
+                        break;
+                    case -1:
+                        keepLooping = false;
+                        Console.WriteLine("Thank you");
+                            break;
+
+                    default:
+                        Console.WriteLine("Not a valid selection.");
+                        break;
+                }
+
+            }
 
         }
 
-        private static void AskForNumber()
+        static void RandomEx()
+        {
+            Random random = new Random();
+            Random random2 = new Random();
+
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine(random.Next(1, 5)); // 1-4. 5 is exclusive
+            }
+
+            Console.WriteLine("---------------------");
+
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine(random2.Next(1, 5)); // 1-4. 5 is exclusive
+            }
+
+
+        }
+
+        static void PrintList(List<double> numbers)
+        {
+            Console.WriteLine("------List------");
+
+            foreach (var aNum in numbers)
+            {
+                Console.WriteLine(aNum);
+            }
+        }
+
+        static void TextEx()
+        {
+            string someText = "";
+
+            StringBuilder stringBuilder = new StringBuilder();//use this to remember guesses
+
+            stringBuilder.Append("some text");
+            stringBuilder.Append("some other text");
+
+            Console.WriteLine(stringBuilder);
+
+        }
+
+        static void SpeedDifStringVSStringBuilder()
+        {
+
+            string star = "";
+
+            DateTime stringStart = DateTime.Now;
+            for (int i = 0; i < 100_000; i++)
+            {
+                star = star + "*";
+            }
+            DateTime stringEnd = DateTime.Now;
+
+            StringBuilder stringBuilder_star = new StringBuilder();
+
+            DateTime sbStart = DateTime.Now;
+            for (int i = 0; i < 100_000; i++)
+            {
+                stringBuilder_star.Append("*");
+            }
+            DateTime sbEnd = DateTime.Now;
+
+            Console.WriteLine("String time: " + (stringEnd - stringStart));
+            Console.WriteLine("SB time: " + (sbStart - sbEnd));
+
+
+        }
+
+        private static double AskForNumber()
         {
             bool notNumber = false;
+            double number = 0;
 
             do
             {
-                Console.WriteLine("please input number");
+                Console.WriteLine("please input number: ");
 
-                double number = 0;
 
                 try
                 {
@@ -58,6 +167,8 @@ namespace Net.core_fundamentals_2
                 }
 
             } while (notNumber);
+
+            return number;
         }
 
         static void PrimitivNumber()
