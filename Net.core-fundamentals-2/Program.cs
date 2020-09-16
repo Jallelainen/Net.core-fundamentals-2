@@ -23,8 +23,9 @@ namespace Net.core_fundamentals_2
                 Console.WriteLine("1: Print list");
                 Console.WriteLine("2: Add to list");
                 Console.WriteLine("3: Speed test");
-                Console.WriteLine("4: Random Example");
-                Console.WriteLine("-1: Exit");
+                Console.WriteLine("4: Random example");
+                Console.WriteLine("5: Char example");
+                Console.WriteLine("-1: Exit");s
 
                 double selection = AskForNumber();
 
@@ -41,6 +42,9 @@ namespace Net.core_fundamentals_2
                         break;
                     case 4:
                         RandomEx();
+                        break;
+                    case 5:
+                        ExKeyChar();
                         break;
                     case -1:
                         keepLooping = false;
@@ -86,11 +90,35 @@ namespace Net.core_fundamentals_2
             }
         }
 
+        static void ExKeyChar()
+        {
+            Console.WriteLine("Press a key:");
+            char aSymbol = Console.ReadKey().KeyChar;
+
+
+
+            Console.WriteLine("press a key once more");
+            char bSymbol = Console.ReadKey(true).KeyChar; // (true) will not show keypress on console
+
+            Console.WriteLine("first key was: " + aSymbol + "\nnumber: " + (int)aSymbol);
+            Console.WriteLine("Second key was: " + bSymbol + "\nnumber: " + (int)aSymbol);
+            Console.WriteLine(aSymbol + 1 + " look out for doing math on a char"); // aSymbol(will be represented by ASCII number) + 1 will result in numbers. start with string solves this
+
+        }
+
         static void TextEx()
         {
-            string someText = "";
+            string someText = "jalle";
+
+            char letter = someText[3];
+
+            someText.Contains('x'); // does it contain char?
+            someText.Contains("xyl"); // does it contain string?
+            someText.IndexOf('x'); // 
 
             StringBuilder stringBuilder = new StringBuilder();//use this to remember guesses
+
+            stringBuilder.ToString().Contains('z'); // place guessed letters in string builder
 
             stringBuilder.Append("some text");
             stringBuilder.Append("some other text");
