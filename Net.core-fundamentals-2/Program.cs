@@ -25,7 +25,7 @@ namespace Net.core_fundamentals_2
                 Console.WriteLine("3: Speed test");
                 Console.WriteLine("4: Random example");
                 Console.WriteLine("5: Char example");
-                Console.WriteLine("-1: Exit");s
+                Console.WriteLine("-1: Exit");
 
                 double selection = AskForNumber();
 
